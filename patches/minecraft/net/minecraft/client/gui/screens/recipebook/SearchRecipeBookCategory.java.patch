@@ -1,0 +1,23 @@
+--- a/net/minecraft/client/gui/screens/recipebook/SearchRecipeBookCategory.java
++++ b/net/minecraft/client/gui/screens/recipebook/SearchRecipeBookCategory.java
+@@ -8,7 +_,7 @@
+ import net.minecraftforge.api.distmarker.OnlyIn;
+ 
+ @OnlyIn(Dist.CLIENT)
+-public enum SearchRecipeBookCategory implements ExtendedRecipeBookCategory {
++public enum SearchRecipeBookCategory implements ExtendedRecipeBookCategory, net.minecraftforge.common.IExtensibleEnum {
+     CRAFTING(RecipeBookCategories.CRAFTING_EQUIPMENT, RecipeBookCategories.CRAFTING_BUILDING_BLOCKS, RecipeBookCategories.CRAFTING_MISC, RecipeBookCategories.CRAFTING_REDSTONE),
+     FURNACE(RecipeBookCategories.FURNACE_FOOD, RecipeBookCategories.FURNACE_BLOCKS, RecipeBookCategories.FURNACE_MISC),
+     BLAST_FURNACE(RecipeBookCategories.BLAST_FURNACE_BLOCKS, RecipeBookCategories.BLAST_FURNACE_MISC),
+@@ -16,6 +_,11 @@
+ 
+     private final List<RecipeBookCategory> includedCategories;
+ 
++
++    public static SearchRecipeBookCategory create(String name, List<RecipeBookCategory> includedCategories) {
++        throw new IllegalStateException("Enum not extended");
++    }
++    
+     private SearchRecipeBookCategory(final RecipeBookCategory... p_368173_) {
+         this.includedCategories = List.of(p_368173_);
+     }
